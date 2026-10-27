@@ -68,4 +68,7 @@ proj4*/*.txt
 
 .ideal/
 
+# Local lecture scratch work, kept out of the repo for now
+lectureCode/test/
+
 
