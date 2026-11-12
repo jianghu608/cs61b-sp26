@@ -1,31 +1,38 @@
 public class SLList {
-    private IntNode first;
+    private IntNode sentinel;
+
+    // EMPTY
+    // Set sentinel IntNode. Always modify sentinel.next
+    public SLList() {
+        sentinel = new IntNode(6, null);
+    }
 
     public SLList(int x) {
-        first = new IntNode(x, null);
+        sentinel = new IntNode(6, null);
+        sentinel.next = new IntNode(x, null);
     }
 
     public void addFirst(int x) {
-        first = new IntNode(x, first);
+        sentinel.next = new IntNode(x, sentinel.next);
     }
 
     public int getFirst() {
-        return first.item;
+        return sentinel.next.item;
     }
 
     private static int size(IntNode p) {
         if (p.next == null) {
-            return 1;
+            return 0;
         }
         return size(p.next) + 1;
     }
 
     public int size() {
-        return size(first);
+        return size(sentinel.next);
     }
 
     public void addLast(int x) {
-        IntNode p = first;
+        IntNode p = sentinel;
         while (p.next != null) {
             p = p.next;
         }
