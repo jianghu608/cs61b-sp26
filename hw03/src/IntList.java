@@ -88,5 +88,8 @@ public class IntList {
      */
     public void addFirst(int x) {
         // Optional: Fill in this code
+        IntList temp = new IntList(first, rest);
+        this.first = x;
+        this.rest = temp;
     }
 }

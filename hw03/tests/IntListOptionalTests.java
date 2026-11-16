@@ -35,5 +35,15 @@ public class IntListOptionalTests {
         assertThat(L.get(2)).isEqualTo(15);
     }
 
+    @Test
+    public void testAddFirst() {
+        IntList L = new IntList(15, null);
+
+        L.addFirst(10);
+        assertThat(L.first).isEqualTo(10);
+
+        L.addFirst(15);
+        assertThat(L.first).isEqualTo(15);
+    }
 
 }
