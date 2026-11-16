@@ -23,4 +23,17 @@ public class IntListOptionalTests {
         assertThat(L1.sum()).isEqualTo(30);
         assertThat(L2.sum()).isEqualTo(35);
     }
+
+    @Test
+    public void testAddLast() {
+        IntList L = new IntList(5, null);
+
+        L.addLast(10);
+        assertThat(L.get(1)).isEqualTo(10);
+
+        L.addLast(15);
+        assertThat(L.get(2)).isEqualTo(15);
+    }
+
+
 }

@@ -71,6 +71,13 @@ public class IntList {
      */
     public void addLast(int x) {
         // Optional: Fill in this code
+        if (rest == null) {
+            rest = new IntList(x, null);
+
+            return;
+        }
+
+        rest.addLast(x);
     }
 
     /**
