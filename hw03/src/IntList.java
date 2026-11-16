@@ -60,8 +60,8 @@ public class IntList {
      */
     public int sum() {
         // Optional: Fill in this code
-        if (this == null) {
-            return 0;
+        if (this.rest == null) {
+            return this.first;
         }
         return this.first + this.rest.sum();
     }

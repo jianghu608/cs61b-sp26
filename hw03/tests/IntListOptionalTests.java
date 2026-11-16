@@ -12,9 +12,15 @@ import static org.junit.Assert.fail;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class IntListOptionalTests {
     // TBD
-    IntList L = ()
-    @Test
-    public static void testSum() {
 
+
+
+    @Test
+    public void testSum() {
+        IntList L1 = new IntList(5,new IntList(10, new IntList(15, null)));
+        IntList L2 = new IntList(30,new IntList(0, new IntList(2, new IntList(3, null))));
+
+        assertThat(L1.sum()).isEqualTo(30);
+        assertThat(L2.sum()).isEqualTo(35);
     }
 }
