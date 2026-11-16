@@ -3,7 +3,15 @@ import java.util.List;
 public class LinkedListDeque61B<T> implements Deque61B<T> {
 
     private class Node {
+        T item;
+        Node prev;
+        Node next;
 
+        public Node(T item, Node prev, Node next) {
+            this.item = item;
+            this.prev = prev;
+            this.next = next;
+        }
     }
 
     public LinkedListDeque61B() {
