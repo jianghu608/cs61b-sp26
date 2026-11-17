@@ -31,7 +31,19 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
      */
     @Override
     public void addFirst(T x) {
-
+        /*
+        * A - New Node - B
+        * Imagine prev, next as a pointer, rather than a node.
+        * The pointers that the New Node points to A & B are created by constructor,
+        * so we just need to update the pointers that A & B point to the New Node.
+        * */
+        // Node oldFirst = sentinel.next;
+        // Node newFirst = new Node(x, sentinel, oldFirst);
+        // sentinel.next = newFirst;
+        // oldFirst.prev = newFirst;
+        sentinel.next.prev = new Node(x, sentinel, sentinel.next);  // 先更新 B -> newFirst 的指针
+        sentinel.next = sentinel.next.prev; // 再更新 A (sentinel) -> newFirst 的指针
+        size++;
     }
 
     /**
@@ -41,7 +53,14 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
      */
     @Override
     public void addLast(T x) {
-
+        // 同上
+        // Node oldLast = sentinel.prev;
+        // Node newLast = new Node(x,oldLast, sentinel) 新节点指向两边
+        // oldLast.next = newLast;
+        // sentinel.prev = newLast;
+        sentinel.prev.next = new Node(x, sentinel.prev, sentinel);
+        sentinel.prev = sentinel.prev.next;
+        size++;
     }
 
     /**
