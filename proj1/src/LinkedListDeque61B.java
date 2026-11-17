@@ -161,9 +161,9 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
     }
 
     public static void main(String[] args) {
-        Deque61B<Integer> lld = new LinkedListDeque61B<>();
-        lld.addLast(0);
-        lld.addLast(1);
-        lld.addFirst(-1);
+        Deque61B<Integer> lld = new LinkedListDeque61B<>(); // []
+        lld.addLast(0); // [0]
+        lld.addLast(1); // [0, 1]
+        lld.addFirst(-1);   // [-1, 0, 1]
     }
 }
