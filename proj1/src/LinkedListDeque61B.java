@@ -14,8 +14,14 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
         }
     }
 
-    public LinkedListDeque61B() {
+    Node sentinel;
+    int size;
 
+    public LinkedListDeque61B() {
+        sentinel = new Node(null, null, null);
+        size = 0;
+        sentinel.next = sentinel;
+        sentinel.prev = sentinel;
     }
 
     /**
@@ -136,7 +142,7 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
     }
 
     public static void main(String[] args) {
-        Deque61B lld = new LinkedListDeque61B<>();
+        Deque61B<Integer> lld = new LinkedListDeque61B<>();
         lld.addLast(0);
         lld.addLast(1);
         lld.addFirst(-1);
