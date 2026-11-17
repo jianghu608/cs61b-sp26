@@ -89,7 +89,7 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        return sentinel.next == sentinel;
     }
 
     /**
@@ -109,7 +109,7 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
      */
     @Override
     public T getFirst() {
-        return null;
+        return sentinel.next.item;
     }
 
     /**
@@ -119,7 +119,7 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
      */
     @Override
     public T getLast() {
-        return null;
+        return sentinel.prev.item;
     }
 
     /**
@@ -129,7 +129,14 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
      */
     @Override
     public T removeFirst() {
-        return null;
+        T oldFirst = sentinel.next.item;
+        sentinel.next = sentinel.next.next;
+        sentinel.next.prev = sentinel;
+        if (size > 0) {
+            size--;
+        }
+
+        return oldFirst;
     }
 
     /**
@@ -139,7 +146,14 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
      */
     @Override
     public T removeLast() {
-        return null;
+        T oldLast = sentinel.prev.item;
+        sentinel.prev = sentinel.prev.prev;
+        sentinel.prev.next = sentinel;
+        if (size > 0) {
+            size--;
+        }
+
+        return oldLast;
     }
 
     /**
@@ -153,7 +167,19 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
      */
     @Override
     public T get(int index) {
-        return null;
+        if (index < 0) {
+            return null;
+        }
+
+        Node currentNode = sentinel.next;   // default index is
+
+        int i = 0;
+        while (i < index && currentNode != sentinel) {
+            i++;
+            currentNode = currentNode.next;
+        }
+
+        return currentNode.item;
     }
 
     /**
@@ -164,9 +190,19 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
      * @param index index to get
      * @return element at {@code index} in the deque
      */
+    private T getRecursive(Node currentNode, int index) {
+        if (currentNode == sentinel || index == 0) {
+            return currentNode.item;
+        }
+
+        return getRecursive(currentNode.next, index - 1);
+    }
     @Override
     public T getRecursive(int index) {
-        return null;
+        if (index < 0) {
+            return null;
+        }
+        return getRecursive(sentinel.next, index);
     }
 
     public static void main(String[] args) {
